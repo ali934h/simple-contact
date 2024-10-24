@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios"; // اگر می‌خواهید از fetch استفاده کنید، این خط را حذف کنید.
 
 function App() {
   const [name, setName] = useState("");
@@ -9,8 +8,14 @@ function App() {
     if (!name) return;
 
     try {
-      // ارسال اطلاعات به بک‌اند
-      await axios.post("http://your-backend-url.com/submit", { name });
+      // ارسال اطلاعات به Worker
+      await fetch("https://your-worker-url.workers.dev", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name }),
+      });
       alert("Data sent successfully!");
     } catch (error) {
       console.error("Error sending data:", error);
