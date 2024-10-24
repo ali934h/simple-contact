@@ -9,14 +9,19 @@ function App() {
 
     try {
       // ارسال اطلاعات به Worker
-      await fetch("https://simplecontactworker.kenconsidine90.workers.dev/", {
+      const response = await fetch("https://simplecontactworker.kenconsidine90.workers.dev", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name }),
       });
-      alert("Data sent successfully!");
+
+      if (response.ok) {
+        alert("Data sent successfully!");
+      } else {
+        alert("Error sending data!");
+      }
     } catch (error) {
       console.error("Error sending data:", error);
     }
