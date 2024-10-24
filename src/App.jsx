@@ -9,7 +9,7 @@ function App() {
 
     try {
       // ارسال اطلاعات به Worker
-      await fetch("https://your-worker-url.workers.dev", {
+      await fetch("https://simplecontactworker.kenconsidine90.workers.dev/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
